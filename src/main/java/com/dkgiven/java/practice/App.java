@@ -3,9 +3,11 @@ package com.dkgiven.java.practice;
 import static java.lang.String.format;
 
 import com.dkgiven.java.practice.graphs.domain.Node;
+import com.dkgiven.java.practice.graphs.searches.BreadthFirstSearch;
 import com.dkgiven.java.practice.graphs.searches.DepthFirstSearch;
 
 public class App {
+    // TODO: Use Maven resources and Jackson to import graph from config file
     public static void main(String[] args) {
         Node a = new Node("A");
         Node b = new Node("B");
@@ -16,7 +18,7 @@ public class App {
         Node g = new Node("G");
         Node h = new Node("H");
         Node i = new Node("I");
-        
+
         Node targetNode = i;
 
         // Add paths
@@ -40,9 +42,13 @@ public class App {
             System.out.println(
                     format("Depth first search completed without finding destination node [%s]...", targetNode));
         }
-        // System.out.println("Running breadth first search...");
-        // BreadthFirstSearch bfs = new BreadthFirstSearch();
-        // bfs.searchForNode(a, f);
+        System.out.println("Running breadth first search...");
+        BreadthFirstSearch bfs = new BreadthFirstSearch();
+        node = bfs.searchForNode(a, f);
+        if (node == null) {
+            System.out.println(
+                    format("Breadth first search completed without finding destination node [%s]...", targetNode));
+        }
 
     }
 }
